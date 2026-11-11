@@ -233,11 +233,11 @@
   move $t0, $s1 #base $t0= number or rows
   lw $t1, GRID_COLUMNS #t1 = number of columns
   mult $t1, $s2 #t1 *= row #
-  addi $t2, $t0, $t1 #t2 = total sum
+  addu $t2, $t0, $t1 #t2 = total sum   #Graydon chnaged from addi to addu 
   
   sll $t2, $t2, 2 #Shift 2 literals
   lw $s3, 0($s2)
-  jal $ra
+  jr $ra #changed from jal to jr
 
  
  # Draw The Piece After Updating Board
@@ -312,8 +312,8 @@
   # Start The Piece On the Top Right
   li $t0, 0 #base
   lw $t1, GRID_ROW
-  mult $t2, $s2, $t1
-  mult $t2, $t2, 4
+  mul $t2, $s2, $t1 #changed from mult to mul 
+  mul $t2, $t2, 4 #chnaged from mult to mul
  
  check_win: # Check For Win. Check Vertical, Horizontal, Right-Left Diagonals, and Left-Right Diagonals
  
